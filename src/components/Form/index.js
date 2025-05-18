@@ -1,5 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { FaPlus } from 'react-icons/fa';
+
+import './Form.css';
 
 export default function Form({ novaTarefa, handleChange, handleSubmit }) {
   return (
@@ -15,3 +19,9 @@ export default function Form({ novaTarefa, handleChange, handleSubmit }) {
     </form>
   );
 }
+
+Form.propTypes = {
+  novaTarefa: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};

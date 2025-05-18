@@ -39,25 +39,22 @@ export default class Main extends Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
-
     const { novaTarefa, index, tarefas } = this.state;
 
-    //verificar se com espaço também inclui e se editando é igual
-    if (tarefas.includes(novaTarefa)) return;
+    let novaTarefaTrim = novaTarefa.trim();
 
-    if (novaTarefa.trim() === '') return;
+    if (novaTarefaTrim === '' || tarefas.includes(novaTarefaTrim)) return;
 
     if (index < 0) {
       this.setState((prevState) => ({
-        tarefas: [...prevState.tarefas, novaTarefa],
+        tarefas: [...prevState.tarefas, novaTarefaTrim],
         novaTarefa: '',
       }));
     } else {
       this.setState((prevState) => ({
         tarefas: [
           ...prevState.tarefas.slice(0, index), //corta o array até o index (exlusivo)
-          novaTarefa,
+          novaTarefaTrim,
           ...prevState.tarefas.slice(index + 1), //corta o array até o index (inclusivo)
         ],
         novaTarefa: '',
